@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Canvas" representedClassName="Canvas" syncable="YES">
+        <relationship name="shapes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shape" inverseName="canvases" inverseEntity="Shape" syncable="YES"/>
+        <relationship name="transform" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Transform" inverseName="canvas" inverseEntity="Transform" syncable="YES"/>
+    </entity>
+    <entity name="Circle" representedClassName="Circle" parentEntity="Shape" syncable="YES">
+        <attribute name="radius" attributeType="Float" minValueString="7" maxValueString="10" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="x" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="Polygon" representedClassName="Polygon" parentEntity="Shape" syncable="YES">
+        <relationship name="vertices" toMany="YES" minCount="3" deletionRule="Cascade" destinationEntity="Vertex" inverseName="polygon" inverseEntity="Vertex" syncable="YES"/>
+    </entity>
+    <entity name="Shape" representedClassName="Shape" syncable="YES">
+        <attribute name="color" attributeType="Transformable" valueTransformerName="UIColorTransformer" syncable="YES"/>
+        <relationship name="canvases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Canvas" inverseName="shapes" inverseEntity="Canvas" syncable="YES"/>
+    </entity>
+    <entity name="Transform" representedClassName="Transform" syncable="YES">
+        <attribute name="scale" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="canvas" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="Canvas" inverseName="transform" inverseEntity="Canvas" syncable="YES"/>
+    </entity>
+    <entity name="Vertex" representedClassName="Vertex" syncable="YES">
+        <attribute name="index" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="x" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="polygon" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Polygon" inverseName="vertices" inverseEntity="Polygon" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Canvas" positionX="-45" positionY="51" width="128" height="75"/>
+        <element name="Circle" positionX="-234" positionY="171" width="128" height="90"/>
+        <element name="Polygon" positionX="-54" positionY="189" width="128" height="60"/>
+        <element name="Shape" positionX="-234" positionY="36" width="128" height="75"/>
+        <element name="Transform" positionX="153" positionY="51" width="128" height="75"/>
+        <element name="Vertex" positionX="151" positionY="144" width="128" height="105"/>
+    </elements>
+</model>
